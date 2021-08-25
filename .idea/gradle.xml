@@ -10,8 +10,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/02banner" />
+            <option value="$PROJECT_DIR$/03popupwindow" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/testui" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
