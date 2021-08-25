@@ -1,0 +1,3 @@
+rootProject.name = "UIDEMO"
+include ':app'
+include ':testui'
