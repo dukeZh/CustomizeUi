@@ -77,7 +77,10 @@ public class MainActivity extends AppCompatActivity {
             imageViews.add(imageView);
             //添加点
             ImageView point = new ImageView(this);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(30, 30);
+            //在代码中设置得都是像素 ，问题在所有的手机上都是8个像素
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((int) (8*getResources().getDisplayMetrics().density), (int) (8*getResources().getDisplayMetrics().density));
+            // 把8px 转换成8dp （dip 和dp 一个单位,1px是一个像素点）
+            //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(8, 8);
             point.setLayoutParams(params);
             point.setBackgroundResource(R.drawable.point_selector);
             if (i == 0){
