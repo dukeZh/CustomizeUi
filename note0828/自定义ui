@@ -1,0 +1,18 @@
+# bitmap 到底是啥？
+
+#  public MyAttributeView(Context context, @Nullable AttributeSet attrs)
+# TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.MyAttributeView);
+#  attrs 切记不可少 
+
+
+# scrollTo()  scrollBy() 区别
+
+
+# 06ViewGroup流程：
+#  myScroller.startScroll(getScrollX(),getScrollY(),distanceX,0); 
+#  invalidate();
+#  computeScroll();
+#  myScroller.cuputeScrolloffset();
+#  float currx =  (int) myScroller.getCurrx();
+#  scrollTo((int) currx,0);
+#  invalidate();

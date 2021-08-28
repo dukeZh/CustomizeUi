@@ -56,9 +56,10 @@ public class MyScroller {
      * 求移动一小段对应的时间
      * true: 正在移动
      * false：移动结束
+     *
      * @return
      */
-    public boolean cuputeScrolloffset(){
+    public boolean computeScrollOffset() {
         if (isFinish) {
             return false;
         }
@@ -66,16 +67,16 @@ public class MyScroller {
         long endTime = SystemClock.uptimeMillis();
         //滑动这一小段所花费的时间
         long passTime = endTime - startTime;
-        if (passTime < totalTime){
+        if (passTime < totalTime) {
             //还没有移动结束
             //计算平均速度
             //float voleCity = distanceX / totalTime;
             //移动这个一小段对应的距离
-         float distanceSmallX  =  passTime * distanceX / totalTime;
+            float distanceSmallX = passTime * distanceX / totalTime;
+            //移动这一小段对应的横坐标
+            currx = startX + distanceSmallX;
 
-         currx = startX + distanceSmallX;
-
-        }else {
+        } else {
             //移动结束
             isFinish = true;
             //滑动完成的当前位置

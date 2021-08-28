@@ -7,6 +7,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Scroller;
 import android.widget.Toast;
 
 /**
@@ -28,7 +29,7 @@ public class MyViewPager extends ViewGroup {
      */
     private int currentIndex;
 
-    private MyScroller myScroller;
+    private Scroller scroller;
 
     public MyViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -36,7 +37,7 @@ public class MyViewPager extends ViewGroup {
     }
 
     private void initView(Context context) {
-        myScroller = new MyScroller();
+        scroller = new Scroller(context);
         //2.实例化手势识别器
         detector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener(){
             @Override
@@ -148,7 +149,7 @@ public class MyViewPager extends ViewGroup {
         int distanceX = currentIndex*getWidth() - getScrollX();
         //移动到指定位置
 //        scrollTo(currentIndex*getWidth(),getScrollY());
-        myScroller.startScroll(getScrollX(),getScrollY(),distanceX,0);
+        scroller.startScroll(getScrollX(),getScrollY(),distanceX,0);
 
         //绘制  调用 onDraw();computeScroll();
         invalidate();
@@ -160,8 +161,10 @@ public class MyViewPager extends ViewGroup {
     @Override
     public void computeScroll() {
         super.computeScroll();
-        if (myScroller.cuputeScrolloffset()){
-            scrollTo((int) myScroller.getCurrx(),0);
+        if (scroller.computeScrollOffset()){
+            //得到移动这个一小段对应的坐标
+            float currx = scroller.getCurrX();
+            scrollTo((int) currx,0);
             invalidate();
         }
     }
