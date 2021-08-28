@@ -1,0 +1,5 @@
+# bitmap 到底是啥？
+
+#  public MyAttributeView(Context context, @Nullable AttributeSet attrs)
+# TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.MyAttributeView);
+#  attrs 切记不可少 
