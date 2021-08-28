@@ -2,3 +2,5 @@ rootProject.name = "UIDEMO"
 include ':app'
 include ':03popupwindow'
 include ':02banner'
+include ':04togglebutton'
+include ':05customattributes'

@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/02banner" />
             <option value="$PROJECT_DIR$/03popupwindow" />
+            <option value="$PROJECT_DIR$/04togglebutton" />
+            <option value="$PROJECT_DIR$/05customattributes" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
