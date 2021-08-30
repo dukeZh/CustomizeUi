@@ -1,4 +1,8 @@
 # bitmap 到底是啥？
+# Bitmap 代表一个位图，BitmapDrawable 里封装的图片就是一个 Bitmap 对象。
+# 开发者为了把一个 Bitmap 对象包装成 BitmapDrawable 对象，可以调用 BitmapDrawable 的构造器：BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
+# 如果需要获取 BitmapDrawable 所包装的 Bitmap 对象，则可以用 BitmapDrawable 的 getBitmap() 的方法：
+# Bitmap bitmap = bitmapDrawable.getBitmap();
 
 #  public MyAttributeView(Context context, @Nullable AttributeSet attrs)
 # TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.MyAttributeView);
@@ -16,3 +20,17 @@
 #  float currx =  (int) myScroller.getCurrx();
 #  scrollTo((int) currx,0);
 #  invalidate();
+
+# ViewGroup 的事件分发
+# dispatchTouchEvent 事件分发 true 不继续分发，事件没有没有消费，false 继续分分发 
+# onInterceptTouchEvent  事件拦截 true 表示拦截事件，不继续向下分发，交给onTouchEvent处理，false 不拦截，继续向下传
+# onTouchEvent 事件处理 true 消费当前事件，false 不消费，继续分发
+
+# onInterceptTouchEvent（ViewGroup 独有方法,因为ViewGroup有子view ，View 没有，因为View中不再包含View）
+
+# View 的事件分发
+# dispatchTouchEvent 事件分发
+# onTouchEvent 事件处理
+
+# 事件传递分析
+# 
