@@ -61,6 +61,8 @@ public class MyViewPager extends ViewGroup {
                 /**
                  * x：要在x轴上移动的距离
                  * y：要在y轴上移动的距离
+                 * distanceX正值 从右到左
+                 * distanceX负值 从左到右
                  */
                 scrollBy((int) distanceX,0);
 //                scrollBy((int) distanceX,getScrollY());
@@ -162,6 +164,8 @@ public class MyViewPager extends ViewGroup {
                 float distanceY = Math.abs(endY -downY);
                 if (distanceX > distanceY && distanceX > 5){
                     result = true;
+                }else {
+                    scrollToPager(currentIndex);
                 }
                 break;
             case MotionEvent.ACTION_UP:

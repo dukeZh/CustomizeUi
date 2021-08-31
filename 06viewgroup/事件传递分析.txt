@@ -1,0 +1,57 @@
+事件传递分析
+1.什么也不做得传递过程
+
+2021-08-31 09:32:11.925 4420-4420/com.example.eventtest E/eventTest: Activity | dispatchTouchEvent -->ACTION_DOWN
+2021-08-31 09:32:11.926 4420-4420/com.example.eventtest E/eventTest: father | dispatchTouchEvent -->ACTION_DOWN
+2021-08-31 09:32:11.926 4420-4420/com.example.eventtest I/eventTest: father | onInterceptTouchEvent -->ACTION_DOWN
+2021-08-31 09:32:11.926 4420-4420/com.example.eventtest E/eventTest: child | dispatchTouchEvent -->ACTION_DOWN
+2021-08-31 09:32:11.926 4420-4420/com.example.eventtest I/eventTest: child | onInterceptTouchEvent -->ACTION_DOWN
+2021-08-31 09:32:11.926 4420-4420/com.example.eventtest D/eventTest: child | onTouchEvent -->ACTION_DOWN
+2021-08-31 09:32:11.927 4420-4420/com.example.eventtest D/eventTest: father | onTouchEvent -->ACTION_DOWN
+2021-08-31 09:32:11.927 4420-4420/com.example.eventtest D/eventTest: Activity | onTouchEvent -->ACTION_DOWN
+2021-08-31 09:32:11.978 4420-4420/com.example.eventtest E/eventTest: Activity | dispatchTouchEvent -->ACTION_UP
+2021-08-31 09:32:11.978 4420-4420/com.example.eventtest D/eventTest: Activity | onTouchEvent -->ACTION_UP
+
+2.当TouchEventChild 的onTouchEvent()返回true，事件传递
+
+2021-08-31 09:34:29.826 4621-4621/com.example.eventtest E/eventTest: Activity | dispatchTouchEvent -->ACTION_DOWN
+2021-08-31 09:34:29.827 4621-4621/com.example.eventtest E/eventTest: father | dispatchTouchEvent -->ACTION_DOWN
+2021-08-31 09:34:29.827 4621-4621/com.example.eventtest I/eventTest: father | onInterceptTouchEvent -->ACTION_DOWN
+2021-08-31 09:34:29.827 4621-4621/com.example.eventtest E/eventTest: child | dispatchTouchEvent -->ACTION_DOWN
+2021-08-31 09:34:29.827 4621-4621/com.example.eventtest I/eventTest: child | onInterceptTouchEvent -->ACTION_DOWN
+2021-08-31 09:34:29.828 4621-4621/com.example.eventtest D/eventTest: child | onTouchEvent -->ACTION_DOWN
+2021-08-31 09:34:29.864 4621-4621/com.example.eventtest E/eventTest: Activity | dispatchTouchEvent -->ACTION_UP
+2021-08-31 09:34:29.864 4621-4621/com.example.eventtest E/eventTest: father | dispatchTouchEvent -->ACTION_UP
+2021-08-31 09:34:29.864 4621-4621/com.example.eventtest I/eventTest: father | onInterceptTouchEvent -->ACTION_UP
+2021-08-31 09:34:29.864 4621-4621/com.example.eventtest E/eventTest: child | dispatchTouchEvent -->ACTION_UP
+2021-08-31 09:34:29.864 4621-4621/com.example.eventtest D/eventTest: child | onTouchEvent -->ACTION_UP
+
+3.当TouchEventChild 的onTouchEvent()返回true，并且执行super.onTouchEvent(event)，事件传递
+
+2021-08-31 09:39:05.004 4837-4837/com.example.eventtest E/eventTest: Activity | dispatchTouchEvent -->ACTION_DOWN
+2021-08-31 09:39:05.005 4837-4837/com.example.eventtest E/eventTest: father | dispatchTouchEvent -->ACTION_DOWN
+2021-08-31 09:39:05.005 4837-4837/com.example.eventtest I/eventTest: father | onInterceptTouchEvent -->ACTION_DOWN
+2021-08-31 09:39:05.005 4837-4837/com.example.eventtest E/eventTest: child | dispatchTouchEvent -->ACTION_DOWN
+2021-08-31 09:39:05.005 4837-4837/com.example.eventtest I/eventTest: child | onInterceptTouchEvent -->ACTION_DOWN
+2021-08-31 09:39:05.005 4837-4837/com.example.eventtest D/eventTest: child | onTouchEvent -->ACTION_DOWN
+2021-08-31 09:39:05.025 4837-4837/com.example.eventtest E/eventTest: Activity | dispatchTouchEvent -->ACTION_UP
+2021-08-31 09:39:05.026 4837-4837/com.example.eventtest E/eventTest: father | dispatchTouchEvent -->ACTION_UP
+2021-08-31 09:39:05.026 4837-4837/com.example.eventtest I/eventTest: father | onInterceptTouchEvent -->ACTION_UP
+2021-08-31 09:39:05.026 4837-4837/com.example.eventtest E/eventTest: child | dispatchTouchEvent -->ACTION_UP
+2021-08-31 09:39:05.026 4837-4837/com.example.eventtest D/eventTest: child | onTouchEvent -->ACTION_UP
+
+4.在TouchEventFather 的onInterceptTouchEvent()方法返回true
+
+2021-08-31 09:42:40.118 5078-5078/com.example.eventtest E/eventTest: Activity | dispatchTouchEvent -->ACTION_DOWN
+2021-08-31 09:42:40.119 5078-5078/com.example.eventtest E/eventTest: father | dispatchTouchEvent -->ACTION_DOWN
+2021-08-31 09:42:40.119 5078-5078/com.example.eventtest I/eventTest: father | onInterceptTouchEvent -->ACTION_DOWN
+2021-08-31 09:42:40.119 5078-5078/com.example.eventtest D/eventTest: father | onTouchEvent -->ACTION_DOWN
+2021-08-31 09:42:40.119 5078-5078/com.example.eventtest D/eventTest: Activity | onTouchEvent -->ACTION_DOWN
+2021-08-31 09:42:40.140 5078-5078/com.example.eventtest E/eventTest: Activity | dispatchTouchEvent -->ACTION_UP
+2021-08-31 09:42:40.140 5078-5078/com.example.eventtest D/eventTest: Activity | onTouchEvent -->ACTION_UP
+
+
+
+
+
+

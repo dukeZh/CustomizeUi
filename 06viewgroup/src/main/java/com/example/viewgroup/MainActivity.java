@@ -2,12 +2,19 @@ package com.example.viewgroup;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 public class MainActivity extends Activity {
     private MyViewPager myViewPager;
@@ -35,6 +42,27 @@ public class MainActivity extends Activity {
         }
         //添加测试页面
         View test = View.inflate(this, R.layout.test, null);
+        TextView text = test.findViewById(R.id.text);
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Looper.prepare();
+                        Handler handler =   new Handler(){
+                            @Override
+                            public void handleMessage(@NonNull Message msg) {
+                                super.handleMessage(msg);
+                                Toast.makeText(MainActivity.this, "11111111111", Toast.LENGTH_SHORT).show();
+                            }
+                        };
+                        handler.sendEmptyMessage(0);
+                        Looper.loop();
+                    }
+                }).start();
+            }
+        });
         myViewPager.addView(test,2);
 
         for (int i = 0; i < myViewPager.getChildCount(); i++) {
