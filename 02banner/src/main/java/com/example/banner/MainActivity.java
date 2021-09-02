@@ -1,5 +1,6 @@
 package com.example.banner;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -177,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
          * @return
          */
 
+        @SuppressLint("ClickableViewAccessibility")
         @NonNull
         @org.jetbrains.annotations.NotNull
         @Override
@@ -187,32 +189,29 @@ public class MainActivity extends AppCompatActivity {
             container.addView(imageView);
           //  Log.e(TAG,"instantiateItem=="+position+",==imageView"+imageView);
 
-            imageView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    switch (event.getAction()){
-                        case MotionEvent.ACTION_DOWN://手指在这个控件上按下
-                            Log.e(TAG,"OnTouchListener == 手指按下");
-                            handler.removeCallbacksAndMessages(null);
-                            break;
-                        case MotionEvent.ACTION_MOVE://手指在这个控件上移动
-                            Log.e(TAG,"OnTouchListener == 手指移动");
-                            break;
-                        case MotionEvent.ACTION_CANCEL://手指在这个控件上取消
-                            Log.e(TAG,"OnTouchListener == 手指取消");
+            imageView.setOnTouchListener((v, event) -> {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN://手指在这个控件上按下
+                        Log.e(TAG, "OnTouchListener == 手指按下");
+                        handler.removeCallbacksAndMessages(null);
+                        break;
+                    case MotionEvent.ACTION_MOVE://手指在这个控件上移动
+                        Log.e(TAG, "OnTouchListener == 手指移动");
+                        break;
+                    case MotionEvent.ACTION_CANCEL://手指在这个控件上取消
+                        Log.e(TAG, "OnTouchListener == 手指取消");
 //                            handler.removeCallbacksAndMessages(null);
 //                            handler.sendEmptyMessageDelayed(0,4000);
-                            break;
-                        case MotionEvent.ACTION_UP://手指在这个控件上手指离开
-                            Log.e(TAG,"OnTouchListener == 手指离开");
-                            handler.removeCallbacksAndMessages(null);
-                            handler.sendEmptyMessageDelayed(0,4000);
-                            break;
-                        default:
-                            break;
-                    }
-                    return false;
+                        break;
+                    case MotionEvent.ACTION_UP://手指在这个控件上手指离开
+                        Log.e(TAG, "OnTouchListener == 手指离开");
+                        handler.removeCallbacksAndMessages(null);
+                        handler.sendEmptyMessageDelayed(0, 4000);
+                        break;
+                    default:
+                        break;
                 }
+                return false;
             });
             imageView.setTag(position);
             imageView.setOnClickListener(new View.OnClickListener() {

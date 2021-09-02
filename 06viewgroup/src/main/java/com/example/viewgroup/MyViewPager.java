@@ -200,10 +200,13 @@ public class MyViewPager extends ViewGroup {
                  //下标位置
                  int tempIndex = currentIndex;
 
-                 if (startX - endx > getWidth()/2){
+                 //只考虑两种情况左滑右滑，因为只有这两种情况滑动
+                 if (startX - endx > getWidth() >> 1){
+                     //左滑
                      //显示下一个页面
                      tempIndex++;
-                 }else if (endx -startX > getWidth()/2){
+                 }else if (endx -startX > getWidth() >> 1){
+                     // 右滑
                      //显示上一个页面
                      tempIndex--;
                  }
@@ -238,10 +241,11 @@ public class MyViewPager extends ViewGroup {
         int distanceX = currentIndex * getWidth() - getScrollX();
         //移动到指定位置
 //        scrollTo(currentIndex*getWidth(),getScrollY());
-//        scroller.startScroll(getScrollX(),getScrollY(),distanceX,0);
+//        MyScroller.startScroll(getScrollX(),getScrollY(),distanceX,0);
         scroller.startScroll(getScrollX(),getScrollY(),distanceX,0,Math.abs(distanceX));
 
-        //绘制  调用 onDraw();computeScroll();
+        //强制绘制
+        // 调用 onDraw();computeScroll();
         invalidate();
     }
 
