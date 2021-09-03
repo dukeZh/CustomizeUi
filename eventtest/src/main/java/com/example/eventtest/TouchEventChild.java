@@ -29,7 +29,7 @@ public class TouchEventChild extends LinearLayout {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Log.d("eventTest","child | onTouchEvent -->"+TouchEventUtil.getTouchEvent(event));
-//        return super.onTouchEvent(event);
-        return true;
+        return super.onTouchEvent(event);
+      //  return true;
     }
 }
