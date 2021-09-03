@@ -1,5 +1,6 @@
 package com.example.waterwave;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -33,6 +34,7 @@ public class WaveView extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(radio/3);
     }
+    @SuppressLint("HandlerLeak")
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
