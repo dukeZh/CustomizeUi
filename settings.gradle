@@ -1,4 +1,4 @@
-rootProject.name = "UIDEMO"
+rootProject.name = "CustomizeUi"
 include ':app'
 include ':03popupwindow'
 include ':02banner'
